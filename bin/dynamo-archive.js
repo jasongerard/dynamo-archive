@@ -15,7 +15,7 @@
  */
 
 var utils = require('../lib/utils');
-var sleep = require('sleep');
+// var sleep = require('sleep');
 
 var argv = utils.config({
     demand: ['table'],
@@ -45,7 +45,7 @@ function search(params) {
                 }
                 var expected = start + msecPerItem * (done + data.Items.length);
                 if (expected > Date.now()) {
-                    sleep.usleep((expected - Date.now()) * 1000);
+                    utils.msleep((expected - Date.now()));
                 }
                 if (data.LastEvaluatedKey) {
                     params.ExclusiveStartKey = data.LastEvaluatedKey;

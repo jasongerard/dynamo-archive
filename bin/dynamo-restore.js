@@ -16,7 +16,7 @@
 
 var utils = require('../lib/utils');
 var readline = require('readline');
-var sleep = require('sleep');
+// var sleep = require('sleep');
 
 var argv = utils.config({
     demand: ['table'],
@@ -59,7 +59,7 @@ dynamo.describeTable(
                 ++done;
                 var expected = start + msecPerItem * done;
                 if (expected > Date.now()) {
-                    sleep.usleep((expected - Date.now()) * 1000);
+                    utils.msleep((expected - Date.now()));
                 }
             }
         );
